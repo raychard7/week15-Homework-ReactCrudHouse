@@ -34,10 +34,10 @@ export  class HousesList extends React.Component {
      }
 
      //How to know what argument to choose for each method?
-    //  deleteHouse = async (house) => {
-    //     await housesApi.delete(house.id);
-    //     this.fetchHouses()
-    //  }
+     deleteHouse = async (id) => {
+        await housesApi.delete(id);
+        this.fetchHouses()
+     }
      
      render() {
          return(
@@ -52,7 +52,7 @@ export  class HousesList extends React.Component {
                      house={house} //all data from that house in array passed in as props.
                      key={house._id}  //always want to set a key which is the id here.
                      updateHouse={this.updateHouse} //passing in a method as props.
-                    //  deleteHouse={this.deleteHouse}
+                     deleteHouse={this.deleteHouse}
                      />
                  ))}
              </div>

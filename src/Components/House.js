@@ -1,12 +1,11 @@
 import React from 'react' ;
 import { NewRoomForm} from './NewRoomForm';
-import { housesApi } from '../rest/HousesApi';
-import { HousesList } from './HousesList';
+
 
 export const House =(props)=> {
     //deconstructs from props. House object and updatehouse Method.
-    const {house, updateHouse} = props; //deconstruct from props. not a hook.
-
+    const {house, updateHouse, deleteHouse} = props; //deconstruct from props. not a hook.
+    console.log(house)
     const deleteRoom = (roomId) => { //Every time room deleted, House is just updated.
         const updatedHouse= {
             ...house,                     //x is the arr element being tested.
@@ -26,15 +25,20 @@ export const House =(props)=> {
           ))}
         </ul>
     );
-    const deleteHouse = async () => {
-        await housesApi.delete(house.id);
-        // this.fetchHouses()
-     }
     
+    //How is houseId passed in to differentiate??
+    const deleteThisHouse = (houseId) =>{
+        console.log("inside deleteThisHouse" +houseId)
+         house.filter((y)=> )
+
+        deleteHouse(deleteThisHouse)
+    }
+    console.log(deleteHouse)
 
     return(
         <div>
             <h1>{house.name}</h1>
+            {/* (house._id) */}
             <button onClick={deleteHouse}>Delete House</button>
             {
                 rooms({ rooms, houseId: house._id, deleteRoom})

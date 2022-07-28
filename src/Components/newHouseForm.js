@@ -6,12 +6,10 @@ export const NewHouseForm = (props) => {
     const [name,setName] = useState('');
 
     const onSubmit = (e) => {
-        console.log(`inside newHouseForm, onSubmit()`);
+       
         e.preventDefault();
         //name has to have a value to be true
         if(name) {
-            console.log('New house Name:' + name);
-            console.log('props:',props);
            
             housesApi.post(name)
              //posts new house with name written
