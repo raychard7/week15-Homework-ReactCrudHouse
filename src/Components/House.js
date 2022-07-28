@@ -1,6 +1,7 @@
 import React from 'react' ;
 import { NewRoomForm} from './NewRoomForm';
 import { housesApi } from '../rest/HousesApi';
+import { HousesList } from './HousesList';
 
 export const House =(props)=> {
     //deconstructs from props. House object and updatehouse Method.
@@ -25,12 +26,16 @@ export const House =(props)=> {
           ))}
         </ul>
     );
-    console.log(props)
+    const deleteHouse = async () => {
+        await housesApi.delete(house.id);
+        // this.fetchHouses()
+     }
+    
 
     return(
         <div>
             <h1>{house.name}</h1>
-            <button id='delete' onClick={housesApi.delete}>Delete House</button>
+            <button onClick={deleteHouse}>Delete House</button>
             {
                 rooms({ rooms, houseId: house._id, deleteRoom})
             }

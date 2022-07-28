@@ -15,7 +15,7 @@ class HousesApi {
             return data;
            
         } catch(e){
-            console.log('Oops, looks like fetchHouses had an issue.', e)
+            console.log('Oops, looks like fetchHouses had an issue.', e) 
         }
     }
     // A house will get passed into here from the house array in HouseList.js . 
@@ -64,8 +64,15 @@ class HousesApi {
     delete = async (id) => {
         try{
             const resp = await fetch(`${HOUSES_ENDPOINT}/${id}`,{
-                method: "DELETE"
-            })
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                
+            });
+           // return resp
+           const data= await resp.json()
+           return data
         }
         catch(e){
             console.log('Delete  http request failed', e)
