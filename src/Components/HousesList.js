@@ -11,6 +11,7 @@ export  class HousesList extends React.Component {
      //all house methods.
      componentDidMount() {
          this.fetchHouses();
+        
      }
 
      fetchHouses = async () => {
@@ -23,6 +24,7 @@ export  class HousesList extends React.Component {
      updateHouse = async ( updatedHouse) =>{
          await housesApi.put(updatedHouse);
          this.fetchHouses();
+         console.log(this.houses)
      };
 
      //Later when called will take in newHouse as argument.
@@ -35,6 +37,7 @@ export  class HousesList extends React.Component {
 
      //How to know what argument to choose for each method?
      deleteHouse = async (id) => {
+
         await housesApi.delete(id);
         this.fetchHouses()
      }

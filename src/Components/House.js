@@ -5,7 +5,7 @@ import { NewRoomForm} from './NewRoomForm';
 export const House =(props)=> {
     //deconstructs from props. House object and updatehouse Method.
     const {house, updateHouse, deleteHouse} = props; //deconstruct from props. not a hook.
-    console.log(house)
+    
     const deleteRoom = (roomId) => { //Every time room deleted, House is just updated.
         const updatedHouse= {
             ...house,                     //x is the arr element being tested.
@@ -27,19 +27,17 @@ export const House =(props)=> {
     );
     
     //How is houseId passed in to differentiate??
-    const deleteThisHouse = (houseId) =>{
-        console.log("inside deleteThisHouse" +houseId)
-         house.filter((y)=> )
-
-        deleteHouse(deleteThisHouse)
-    }
-    console.log(deleteHouse)
-
+    //house state is an object of all houses
+    // console.log("house in house.js" +house)
+    //migitmic deleteRoom function for deleteHouse.
+ console.log(house)
+ console.log("this is my house ID" + house._id)
+    
     return(
         <div>
             <h1>{house.name}</h1>
             {/* (house._id) */}
-            <button onClick={deleteHouse}>Delete House</button>
+            <button onClick={() =>deleteHouse(house._id)}>Delete House</button>
             {
                 rooms({ rooms, houseId: house._id, deleteRoom})
             }
